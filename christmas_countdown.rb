@@ -16,6 +16,4 @@ def christmas_countdown
   return (christmas - today).to_i
 end
 
-# Rudimentray testing
-p christmas_countdown.class == Integer
-p christmas_countdown == 83
+puts "#{christmas_countdown} days until Christmas."
