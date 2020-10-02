@@ -2,12 +2,13 @@
 puts "What do you want to do? [read|write|exit]"
 action = gets.chomp
 
-# if...elsif...else
-if action == 'read'
+# case statement
+case action
+when "read"
   puts "Entering read mode..."
-elsif action == 'write'
+when "write"
   puts "Entering write mode..."
-elsif action == 'exit'
+when "exit"
   puts "Goodbye!"
 else
   puts "Incorrect choice! -check your spelling"
