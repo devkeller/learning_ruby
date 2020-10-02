@@ -1,6 +1,6 @@
 require 'date'
 
-def countdown_to_xmas
+def christmas_countdown
   # 1. What day is it today?
   today = Date.today
   # 2. When is the next christmas?
@@ -10,5 +10,5 @@ def countdown_to_xmas
 end
 
 # Rudimentray testing
-puts countdown_to_xmas.class == Integer
-puts countdown_to_xmas == 83
+puts christmas_countdown.class == Integer
+puts christmas_countdown == 83
