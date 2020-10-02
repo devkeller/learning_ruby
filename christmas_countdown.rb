@@ -1,5 +1,6 @@
 require 'date'
 
+# Note: Christmas is defined as the 24th of December
 def christmas_countdown
   # Get today's date and year
   today = Date.today
