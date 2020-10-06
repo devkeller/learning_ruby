@@ -2,8 +2,13 @@ require 'rspec/autorun'
 
 class FizzBuzz
   def fizz_buzz(number)
-    return 'Fizz' if number == 3
-    
+    if number % 3 == 0
+      return 'Fizz'
+    elsif number % 5 == 0
+      return 'Buzz'
+    else
+      return number.to_s
+    end
   end
 end
 
