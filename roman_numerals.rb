@@ -19,33 +19,32 @@ def old_roman_numeral(number)
 end
 
 def old_roman_numerals(an_integer)
-  # TODO: translate integer in roman number - old-style way
   numerals = ''
   if an_integer >= 1000
-    numerals += 'M' * (an_integer / 1000)
+    numerals << 'M' * (an_integer / 1000)
     an_integer = an_integer % 1000
   end
   if an_integer >= 500
-    numerals += 'D' * (an_integer / 500)
+    numerals << 'D' * (an_integer / 500)
     an_integer = an_integer % 500
   end
   if an_integer >= 100
-    numerals += 'C' * (an_integer / 100)
+    numerals << 'C' * (an_integer / 100)
     an_integer = an_integer % 100
   end
   if an_integer >= 50
-    numerals += 'L' * (an_integer / 50)
+    numerals << 'L' * (an_integer / 50)
     an_integer = an_integer % 50
   end
   if an_integer >= 10
-    numerals += 'X' * (an_integer / 10)
+    numerals << 'X' * (an_integer / 10)
     an_integer = an_integer % 10
   end
   if an_integer >= 5
-    numerals += 'V' * (an_integer / 5)
+    numerals << 'V' * (an_integer / 5)
     an_integer = an_integer % 5
   end
-  numerals += 'I' * (an_integer / 1)
+  numerals << 'I' * (an_integer / 1)
   return numerals
 end
 
