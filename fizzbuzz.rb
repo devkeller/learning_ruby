@@ -14,6 +14,8 @@ class FizzBuzz
   end
 
   def fizz_buzz_array(number)
+    raise ArgumentError, 'Argument should be a positive integer' unless number.positive?
+
     output = []
     (1..number).each do |each|
       fizzbuzz = ''
