@@ -2,7 +2,9 @@ require 'rspec/autorun'
 
 class FizzBuzz
   def fizz_buzz(number)
-    if number % 3 == 0
+    if number % 3 == 0 && number % 5 == 0
+      return 'FizzBuzz'
+    elsif number % 3 == 0
       return 'Fizz'
     elsif number % 5 == 0
       return 'Buzz'
@@ -35,6 +37,7 @@ describe FizzBuzz do
   end
 end
 
+# Alternative way of writing specification
 describe FizzBuzz do
   [
     [1, '1'],
@@ -45,7 +48,7 @@ describe FizzBuzz do
     [10, 'Buzz'],
     [15, 'FizzBuzz']
   ].each do |input, result|
-    it "should return #{input} for #{result}" do
+    it "should return '#{result}' for #{input}" do
       expect(subject.fizz_buzz(input)).to eq(result)
     end
   end
