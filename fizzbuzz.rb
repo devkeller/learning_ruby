@@ -14,6 +14,14 @@ class FizzBuzz
   end
 
   def fizz_buzz_array(number)
+    output = []
+    (1..number).each do |each|
+      fizzbuzz = ''
+      fizzbuzz += 'Fizz' if (each % 3).zero?
+      fizzbuzz += 'Buzz' if (each % 5).zero?
+      output << (fizzbuzz.empty? ? each : fizzbuzz)
+    end
+    return output
   end
 end
 
