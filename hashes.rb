@@ -31,3 +31,7 @@ transformed_students = students.map do |student_info|
 end
 
 p transformed_students
+
+# An exception to the shorter {symbol: value} syntax is when you would like to use a numeric key:
+# hash = {1: 'one'} # will not work
+hash = {1 => 'one'} # will work
