@@ -19,6 +19,14 @@ def word_frequency(file_name, stop_words_file_name, number_of_word)
       words_by_frequency[word] = 1
     end
   end
+
+  # Get rid of the noise
+  open(stop_words_file_name, 'r').each_line do |word|
+    stop_word = word.strip
+    if words_by_frequency.key?(stop_word)
+      words_by_frequency.delete(stop_word)
+    end
+  end
   sorted_output_arr = words_by_frequency.sort_by{ |k, v| v }.reverse
   sorted_output_arr.first(number_of_word).to_h
 end
