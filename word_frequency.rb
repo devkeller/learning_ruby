@@ -1,37 +1,29 @@
-def word_frequency(file_name, stop_words_file_name, number_of_word)
-  # Return hash of occurences of number_of_word most frequent words
+# Define method to create array of words from text file
+def file_words_to_arr(file_name)
+  arr = []
+  File.open(file_name, "r").each_line do |line|
+    line.downcase.split(/'\S*|\W/).reject { |s| s == "" }.each { |word| arr << word }
+  end
+  arr
+end
 
-  string = open(file_name, 'r') { |f| f.read }
-  # remove punctuation and lowercase everything
-  lowercased_string = string.downcase.gsub(/\W/, ' ')
-  # return string into array of strings
-  arr_of_words = lowercased_string.split(' ')
+# Return hash of occurences of number_of_word most frequent words
+def word_frequency(file_name, stop_words_file_name, number_of_word)
   words_by_frequency = {}
 
-  # loop over arr_of_words
-  # add each word to hash as 'key' with a val
-  # each time we come across same word, we increment the value
-  arr_of_words.each do |word|
-    if words_by_frequency.key?(word)
-      words_by_frequency[word] += 1
-    else
-      # new words land here, so we add it to the has
-      words_by_frequency[word] = 1
-    end
-  end
+  source_arr = file_words_to_arr(file_name)
+  stop_arr = file_words_to_arr(stop_words_file_name)
+  wordcount_arr = source_arr - stop_arr
 
-  # Get rid of the noise
-  open(stop_words_file_name, 'r').each_line do |word|
-    stop_word = word.strip
-    if words_by_frequency.key?(stop_word)
-      words_by_frequency.delete(stop_word)
-    end
-  end
-  sorted_output_arr = words_by_frequency.sort_by{ |k, v| v }.reverse
-  sorted_output_arr.first(number_of_word).to_h
+  # Filter count array should include the x most frequent words and put them and their count into the hash
+  filter_count_arr = wordcount_arr.uniq.max_by(number_of_word) { |word| wordcount_arr.count(word) }
+  filter_count_arr.each { |word| words_by_frequency[word] = wordcount_arr.count(word) }
+
+  words_by_frequency
 end
 # manual test
 filename = 'data/source_text.txt'
+#filename = 'data/Harry Potter and the Sorcerer.txt'
 stop_words = 'data/stop_words.txt'
 #p File.file? filename 
 #p File.file? stop_words 
