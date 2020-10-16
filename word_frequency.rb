@@ -1,5 +1,5 @@
-def word_frequency(file_name, stop_words_file_name)
-  # Return hash of occurences of most frequent words
+def word_frequency(file_name, stop_words_file_name, number_of_word)
+  # Return hash of occurences of number_of_word most frequent words
 
   string = open(file_name, 'r') { |f| f.read }
   # remove punctuation and lowercase everything
@@ -20,11 +20,12 @@ def word_frequency(file_name, stop_words_file_name)
     end
   end
   sorted_output_arr = words_by_frequency.sort_by{ |k, v| v }.reverse
-  sorted_output_arr.to_h
+  sorted_output_arr.first(number_of_word).to_h
 end
 # manual test
 filename = 'data/source_text.txt'
 stop_words = 'data/stop_words.txt'
-p File.file? filename 
-p File.file? stop_words
-p word_frequency(filename, stop_words)
+#p File.file? filename 
+#p File.file? stop_words 
+number_of_word = 10
+p word_frequency(filename, stop_words, number_of_word)
