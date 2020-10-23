@@ -2,28 +2,13 @@ require 'rspec/autorun'
 
 class FizzBuzz
   def fizz_buzz(number)
-    if number % 3 == 0 && number % 5 == 0
-      return 'FizzBuzz'
-    elsif number % 3 == 0
-      return 'Fizz'
-    elsif number % 5 == 0
-      return 'Buzz'
-    else
-      return number.to_s
-    end
+    (text = "#{['Fizz'][number % 3]}#{['Buzz'][number % 5]}").empty? ? number.to_s : text
   end
 
   def fizz_buzz_array(number)
     raise ArgumentError, 'Argument should be a positive integer' unless number.positive?
 
-    output = []
-    (1..number).each do |each|
-      fizzbuzz = ''
-      fizzbuzz += 'Fizz' if (each % 3).zero?
-      fizzbuzz += 'Buzz' if (each % 5).zero?
-      output << (fizzbuzz.empty? ? each : fizzbuzz)
-    end
-    return output
+    (1..number).map { |i| (text = "#{['Fizz'][i % 3]}#{['Buzz'][i % 5]}").empty? ? i : text }
   end
 end
 
