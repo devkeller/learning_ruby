@@ -1,3 +1,4 @@
+# "To iterate is human, to recurse divine."
 N = gets.chomp.to_i
 
 def factorial(n)
