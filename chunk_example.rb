@@ -22,6 +22,7 @@ def encrypt_and_compile(s)
   s.chars
    .group_by(&:itself)
    .map { |char, ary| "#{char}#{ary.count}" }
+   .sort
    .join
 end
 
