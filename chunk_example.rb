@@ -27,4 +27,4 @@ def encrypt_and_compile(s)
 end
 
 p chunk_encrypt('abracadabra')        => "a1b1r1a1c1a1d1a1b1r1a1"
-p encrypt_and_compile('abracadabra')  => "a5b2r2c1d1"
+p encrypt_and_compile('abracadabra')  => "a5b2c1d1r2"
