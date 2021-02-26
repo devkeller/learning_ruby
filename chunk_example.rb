@@ -16,3 +16,14 @@ p scan_encrypt('aabaa')         => 'a2b1a2'
 
 p chunk_encrypt('aaabbhffeec')  => 'a3b2h1f2e2c1'
 p chunk_encrypt('aabaa')        => 'a2b1a2'
+
+
+def encrypt_and_compile(s)
+  s.chars
+   .group_by(&:itself)
+   .map { |char, ary| "#{char}#{ary.count}" }
+   .join
+end
+
+p chunk_encrypt('abracadabra')        => "a1b1r1a1c1a1d1a1b1r1a1"
+p encrypt_and_compile('abracadabra')  => "a5b2r2c1d1"
